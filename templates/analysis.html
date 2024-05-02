@@ -1,0 +1,500 @@
+{% extends 'base.html'%}
+
+{% block title %}Analysis{% endblock %}
+
+{% block navbar %}
+
+<div class="logo">
+    <a href="/"><img style="width: 5vw;" src="{{url_for('static', filename='img/logo1.png')}}" alt="logo"></a>
+    <a href="/"><img style="width: 10vw;" src="{{url_for('static', filename='img/word.png')}}" alt="logo"></a>
+  </div>
+  <ul class="nav-item">
+    <li><a class="nav-element " href="{{ url_for('home') }}">Home</a></li>
+    <li class="dropdown">
+      <a class="nav-element"><span>Predictions</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a class="nav-element" href="{{ url_for('mri') }}">MRI Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('report') }}">Report Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('behaviour') }}">Behaviour Analysis</a></li>
+      </ul>
+    </li>
+    <li><a class="nav-element active" href="{{ url_for('analysis') }}">Analysis</a></li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+
+{%endblock%}
+
+{% block body %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    background: white;
+    box-shadow: 0px 5px 28.5px 0px rgba(0, 0, 0, 0.10);
+
+  }
+
+  .formbold-event-wrapper span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 2.5px;
+    color: #008036;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .formbold-event-wrapper h3 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    color: #07074d;
+    width: 60%;
+    margin-bottom: 15px;
+  }
+  .formbold-event-wrapper h4 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #07074d;
+    width: 60%;
+    margin: 25px 0 15px;
+  }
+  .formbold-event-wrapper p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+  }
+
+  .formbold-event-details {
+    background: #fafafa;
+    border: 1px solid #dde3ec;
+    border-radius: 5px;
+    margin: 25px 0 30px;
+  }
+  .formbold-event-details h5 {
+    color: #07074d;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 15px 25px;
+  }
+  .formbold-event-details ul {
+    border-top: 1px solid #edeef2;
+    padding: 25px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
+  .formbold-event-details ul li {
+    color: #536387;
+    font-size: 16px;
+    line-height: 24px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .formbold-form-title {
+    color: #008036;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    width: 60%;
+    padding: 40px 0px;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-direction: column;
+  }
+  .formbold-input-flex > div {
+    width: 100%;
+  }
+  .formbold-form-input {
+    text-align: center;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #008036;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #536387;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-policy {
+    font-size: 14px;
+    line-height: 24px;
+    color: #536387;
+    width: 70%;
+    margin-top: 22px;
+  }
+  .formbold-policy a {
+    color: #008036;
+  }
+  .formbold-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #008036;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  p{text-align: justify;}
+</style>
+
+
+<div class="container">
+
+  <div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-evenly; flex-wrap: wrap;" class="two-form">
+
+    <div class="formbold-main-wrapper">
+      <!-- Author: FormBold Team -->
+      <!-- Learn More: https://formbold.com -->
+      <div class="formbold-form-wrapper">
+        <div class="formbold-event-wrapper">
+          <center><h2 style="padding: 0px 0px 30px 0px" class="formbold-form-title">Analysis</h2></center>
+          <defs>
+          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+            <use xlink:href="#image0_1675_1746" transform="translate(0 -0.524787) scale(0.000379363 0.000864594)"/>
+          </pattern>
+          <img style="width: 65rem; border-radius: 10px" src="../static/img/analysis.jpg">
+          <h4>Note :</h4>
+          <p>
+            Provide all the details which is mentioned in the form, if any information is wrong then the prediction will be invaild. 
+            After filled the all required fields then click submit button to   start prediction process.
+          </p>
+        </div>
+
+        <!-- Form starts ----------------------------------------------------------------------- -->
+
+        <form action="https://formbold.com/s/FORM_ID" method="POST">
+          <h2 style="padding: 30px 0px" class="formbold-form-title">Survey!!</h2>
+
+          <div class="formbold-input-flex">
+            <div>
+              <label for="firstname" class="formbold-form-label">
+                1) Male/Female (M/F) <span style="color: red;">*</span></label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                class="formbold-form-input"
+              />
+            </div>
+            <div>
+              <label for="lastname" class="formbold-form-label"> 
+                2) Education (EDUC) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="formbold-form-label"> 
+                3) Socioeconomic Status (SES) <span style="color: red;">*</span> </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="formbold-form-label">  
+                4) Mini-Mental State Examination (MMSE) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="jobtitle" class="formbold-form-label"> 
+                5) Clinical Dementia Rating (CDR) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="jobtitle"
+                id="jobtitle"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="company" class="formbold-form-label"> 
+                6) Estimated Total Intracranial Volume (eTIV) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="company"
+                id="company"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="state" class="formbold-form-label"> 
+                7) Normalized Whole Brain Volume (nWBV) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="state"
+                id="state"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="country" class="formbold-form-label"> 
+                8) Atlas Scaling Factor (ASF) <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="country"
+                id="country"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div>
+              <label for="postcode" class="formbold-form-label"> 
+                9) Age Category <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="postcode"
+                id="postcode"
+                class="formbold-form-input"
+              />
+            </div>
+          </div>
+
+        <h2 style="padding:30px 0px" class="formbold-form-title">Binary Survey!!</h2>
+    
+          <div class="formbold-input-flex">
+            <div>
+              <label for="firstname" class="formbold-form-label">
+                1) Date Forget <span style="color: red;">*</span>
+              </label>
+              <input
+                type="text"
+                name="firstname"
+                id="Date_Forget"
+                class="formbold-form-input"
+              />
+            </div>
+            <div>
+              <label for="lastname" class="formbold-form-label"> 
+                2) Face Recall <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="lastname"
+                id="Face_Recall"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="email" class="formbold-form-label"> 
+                3) Task Planning <span style="color: red;">*</span> </label>
+              <input
+                type="email"
+                name="email"
+                id="Task_Planning"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="phone" class="formbold-form-label">  
+                4) Word Expression <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="phone"
+                id="Word_Expression"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="jobtitle" class="formbold-form-label"> 
+                5) Mood Shif <span style="color: red;">*</span></label>
+              <input
+                type="text"
+                name="jobtitle"
+                id="Mood_Shif"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="company" class="formbold-form-label"> 
+                6) Adaptability <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="company"
+                id="Adaptability"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="state" class="formbold-form-label"> 
+                7) Solution Finding <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="state"
+                id="Solution_Finding"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="country" class="formbold-form-label"> 
+                8) Sleep Patterns <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="country"
+                id="Sleep_Patterns"
+                class="formbold-form-input"
+              />
+            </div>
+    
+            <div>
+              <label for="postcode" class="formbold-form-label"> 
+                9) Appetite Changes <span style="color: red;">*</span> </label>
+              <input
+                type="text"
+                name="postcode"
+                id="Appetite_Changess"
+                class="formbold-form-input"
+              />
+            </div>
+          
+          <div>
+            <label for="postcode" class="formbold-form-label"> 
+              10) Interest Enthusiasm <span style="color: red;">*</span> </label>
+            <input
+              type="text"
+              name="postcode"
+              id="Interest_Enthusiasm"
+              class="formbold-form-input"
+            />
+          </div>
+    
+    
+          <div>
+            <label for="postcode" class="formbold-form-label"> 
+              11) Financial Matters <span style="color: red;">*</span> </label>
+            <input
+              type="text"
+              name="postcode"
+              id="Financial_Matters"
+              class="formbold-form-input"
+            />
+          </div>
+    
+          <div>
+            <label for="postcode" class="formbold-form-label"> 
+              12) Tech Adaptation <span style="color: red;">*</span> </label>
+            <input
+              type="text"
+              name="postcode"
+              id="Tech_Adaptation"
+              class="formbold-form-input"
+            />
+          </div>
+    
+          <div>
+            <label for="postcode" class="formbold-form-label"> 
+              13) Independence Decrease <span style="color: red;">*</span> </label>
+            <input
+              type="text"
+              name="postcode"
+              id="Independence_Decrease"
+              class="formbold-form-input"
+            />
+          </div>
+    
+          <div>
+            <label for="postcode" class="formbold-form-label"> 
+              14) Home Navigation <span style="color: red;">*</span> </label>
+            <input
+              type="text"
+              name="postcode"
+              id="Home_Navigation"
+              class="formbold-form-input"
+            />
+          </div>
+    
+    
+          <p class="formbold-policy">
+            By filling out this form and clicking submit, you acknowledge our
+            <a href="#">privacy policy.</a>
+          </p>
+          <button class="formbold-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

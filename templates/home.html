@@ -1,0 +1,140 @@
+{% extends 'base.html'%}
+
+{% block title %}Home{% endblock %}
+
+{% block navbar %}
+
+<div class="logo">
+    <a href="/"><img style="width: 4vw;" src="{{url_for('static', filename='img/logo1.png')}}" alt="logo"></a>
+    <a href="/"><img style="width: 10vw;" src="{{url_for('static', filename='img/word.png')}}" alt="logo"></a>
+  </div>
+  <ul class="nav-item">
+    <li><a class="nav-element active" href="{{ url_for('home') }}">Home</a></li>
+    <li class="dropdown">
+      <a class="nav-element"><span>Predictions</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a class="nav-element" href="{{ url_for('mri') }}">MRI Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('report') }}">Report Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('behaviour') }}">Behaviour Analysis</a></li>
+      </ul>
+    </li>
+    <li><a class="nav-element" href="{{ url_for('analysis') }}">Analysis</a></li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+
+{%endblock%}
+
+{% block body %}
+
+  <header>
+    <div class="hero-section">
+        <div class="topic">
+            <h1 style="padding: 25px; font-size: 3rem;">Welcome to <span style="color: #008036;">Alzheimer Disease Prediction</span> </h1>
+            <p style="font-size: 20px;">Click Play Button To Watch video</p>
+        </div>
+
+      <div class="girl-img">
+        <a> <img style="width: 30vw;" src="{{url_for('static', filename='img/girl.png')}}" alt=""></a>
+        <video style=" box-shadow: 0px 5px 28.5px 0px rgba(0, 0, 0, 0.10);" class="dis-video" controls>
+            <source src="{{url_for('static', filename='video/video.mp4')}}" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+      </div>
+    </div>
+    <center><hr style=" border: 0.5px solid green; border-radius: 5px; width: 75vw; margin: 5rem;" class="new5"></center>
+
+    <center>
+      <div style="margin: 5rem; display: flex; align-items: center; flex-direction: row; flex-wrap: wrap; justify-content: center;" class="middle-body">
+        <div class="content">
+          <h1 style="letter-spacing: 2px; font-weight: 20; font-size: 3rem;">Lets know about <span style="color: #008036; font-weight: 700;">Alzheimer</span> </h1>
+          <p style=" text-align: justify; font-size: 15px; width: 56vw; padding: 5rem; line-height: 35px">
+            Alzheimer's disease is a progressive neurodegenerative disorder characterized by the gradual decline of cognitive functions, impacting memory, thinking, and behavior. 
+            It is the most common cause of dementia among older adults. 
+            In the context of medical imaging, particularly Flair MRI (Fluid-Attenuated Inversion Recovery) is utilized to visualize brain structures and detect abnormalities. 
+            Flair MRI is sensitive to fluid changes and is effective in highlighting lesions, making it valuable for examining brain tissues. 
+            In Alzheimer's research, Flair MRI plays a crucial role in identifying structural alterations and abnormalities associated with the disease, 
+            aiding in early diagnosis and understanding the progression of this challenging neurological condition.
+          </p>
+        </div>
+    <img style="width: 30vw;" src="../static/img/boy2.png" alt="">
+  </div>
+  </center>
+  </header>
+
+  <div class="container">
+    <center><hr style=" border: 0.5px solid green; border-radius: 5px; width: 75vw; margin: 5rem;" class="new5"></center>
+
+    <center><h1 style="letter-spacing: 2px; font-size: 3rem; margin: 7rem;">Four Types of <span style="color: #008036;">Alzheimer</span> </h1></center>
+    <div class="box-container">
+        <div class="box-item">
+        <div class="flip-box">
+          <div class="flip-box-front text-center" style="background-image: url('../static/img/card1.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header">Mild Cognitive Impairment</h3>
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+            </div>
+          </div>
+          <div class="flip-box-back text-center" style="background-image: url('../static/img/card1.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header">Mild Cognitive Impairment</h3>
+              <p>Mild cognitive impairment (MCI) is a condition that represents a subtle but noticeable decline in cognitive abilities, beyond what is considered normal for a person's age.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="box-item">
+        <div class="flip-box">
+          <div class="flip-box-front text-center" style="background-image: url('../static/img/card2.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header"> Very Mild Cognitive Impairment</h3>
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+            </div>
+          </div>
+          <div class="flip-box-back text-center" style="background-image: url('../static/img/card2.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header">Very Mild Cognitive Impairment</h3>
+              <p>Very mild cognitive impairment (VMCI) is a subtle decline in cognitive abilities that is more noticeable than typical age-related changes but does not significantly impact daily functioning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-container">
+        <div class="box-item">
+            <div class="flip-box">
+              <div class="flip-box-front text-center" style="background-image: url('../static/img/card3.jpg');">
+                <div class="inner color-white">
+                  <h3 class="flip-box-header">Moderate Cognitive Impairment</h3>
+                  <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+                </div>
+              </div>
+              <div class="flip-box-back text-center" style="background-image: url('../static/img/card3.jpg');">
+                <div class="inner color-white">
+                  <h3 class="flip-box-header">Moderate Cognitive Impairment</h3>
+                  <p>Moderate cognitive impairment represents a more noticeable decline in cognitive functions compared to mild stages but falls short of severe impairment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="box-item">
+        <div class="flip-box">
+          <div class="flip-box-front text-center" style="background-image: url('../static/img/card4.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header">Non-Cognitive Impairment</h3>
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+            </div>
+          </div>
+          <div class="flip-box-back text-center" style="background-image: url('../static/img/card4.jpg');">
+            <div class="inner color-white">
+              <h3 class="flip-box-header">Non-Cognitive Impairment</h3>
+              <p>Non-cognitive impairment refers to a condition where there is no significant decline in cognitive functions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+{% endblock %}

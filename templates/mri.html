@@ -1,0 +1,166 @@
+{% extends 'base.html'%}
+
+{% block title %}MRI Analysis{% endblock %}
+
+{% block navbar %}
+
+<div class="logo">
+    <a href="/"><img style="width: 5vw;" src="{{url_for('static', filename='img/logo1.png')}}" alt="logo"></a>
+    <a href="/"><img style="width: 10vw;" src="{{url_for('static', filename='img/word.png')}}" alt="logo"></a>
+  </div>
+  <ul class="nav-item">
+    <li><a class="nav-element " href="{{ url_for('home') }}">Home</a></li>
+    <li class="dropdown">
+      <a class="nav-element active"><span>Predictions</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a class="nav-element" href="{{ url_for('mri') }}">MRI Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('report') }}">Report Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('behaviour') }}">Behaviour Analysis</a></li>
+      </ul>
+    </li>
+    <li><a class="nav-element" href="{{ url_for('analysis') }}">Analysis</a></li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+
+{%endblock%}
+
+{% block body %}
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 70rem;
+  height: 50rem;
+  background-color: #ffffff;
+  padding: 10px 30px 40px;
+}
+
+.card h3 {
+  color: #008036;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 13px;
+}
+
+.drop_box {
+  margin: 10px 0;
+  padding: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 3px dotted #a3a3a3;
+  border-radius: 5px;
+}
+
+.drop_box h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
+}
+
+.drop_box p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #008036;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btn:hover{
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #008036;
+  padding: 10px 20px;
+  border: none;
+  outline: 1px solid #010101;
+  cursor: pointer;
+}
+
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+</style>
+
+<!-- <center><div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="content">
+  <form style="margin-top: 12px;" >
+      <div class="card">
+        <center><h3>Upload Files</h3></center>
+        <div class="drop_box">
+          <header>
+            <h4>Select File here</h4>
+          </header>
+          <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
+          <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+          <input type="file" style="margin-top: 20px; border: 25px;" id="image" class="btn">
+        </div>
+      </div>
+      <button style="margin-top: 5rem; border-radius: 20px;" id="predict" class="btn">Predict</button>
+  </form>
+  <img style="width: 45vw;" src="../static/img/boy3.png" alt="">
+</div></center> --------->
+
+<center>
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="content">
+      <form style="margin-top: 12px;" id="uploadForm" enctype="multipart/form-data">
+          <div class="card">
+              <center><h3>Upload MRI Image</h3></center>
+              <div class="drop_box">
+                <header>
+                  <h4>Select File here</h4>
+                </header>
+                <p>Files Supported: .png .jpg .jpeg </p>
+                <input type="file" accept=".jpeg,.jpg,.png" style="margin-top: 20px; border: 25px;" id="image" name="image" accept="image/*" class="btn" required>
+              </div>
+          </div>
+          <button type="submit" style="margin-top: 5rem; border-radius: 20px;" class="btn">Predict</button>
+      </form>
+      <img style="width: 45vw;" src="../static/img/boy3.png" alt="">
+      <div id="result" style="margin-top: 5rem;"></div>
+  </div>
+</center>
+<script>
+  document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append('image', document.getElementById('image').files[0]);
+      const response = await fetch('/predict', {
+          method: 'POST',
+          body: formData
+      });
+      const result = await response.text();
+      document.getElementById('result').innerHTML = result;
+  });
+</script>
+
+
+
+
+{% endblock %}

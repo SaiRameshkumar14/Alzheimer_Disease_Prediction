@@ -1,0 +1,345 @@
+{% extends 'base.html'%}
+
+{% block title %}Behaviour{% endblock %}
+
+{% block navbar %}
+
+<div class="logo">
+    <a href="/"><img style="width: 5vw;" src="{{url_for('static', filename='img/logo1.png')}}" alt="logo"></a>
+    <a href="/"><img style="width: 10vw;" src="{{url_for('static', filename='img/word.png')}}" alt="logo"></a>
+  </div>
+  <ul class="nav-item">
+    <li><a class="nav-element " href="{{ url_for('home') }}">Home</a></li>
+    <li class="dropdown">
+      <a class="nav-element active"><span>Predictions</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a class="nav-element" href="{{ url_for('mri') }}">MRI Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('report') }}">Report Analysis</a></li>
+        <li><a class="nav-element" href="{{ url_for('behaviour') }}">Behaviour Analysis</a></li>
+      </ul>
+    </li>
+    <li><a class="nav-element" href="{{ url_for('analysis') }}">Analysis</a></li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+
+{%endblock%}
+
+{% block body %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    background: white;
+    box-shadow: 0px 5px 28.5px 0px rgba(0, 0, 0, 0.10);
+  }
+
+  .formbold-event-wrapper span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 2.5px;
+    color: #008036;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .formbold-event-wrapper h3 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    color: #07074d;
+    width: 60%;
+    margin-bottom: 15px;
+  }
+  .formbold-event-wrapper h4 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #07074d;
+    width: 60%;
+    margin: 25px 0 15px;
+  }
+  .formbold-event-wrapper p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+  }
+
+  .formbold-event-details {
+    background: #fafafa;
+    border: 1px solid #dde3ec;
+    border-radius: 5px;
+    margin: 25px 0 30px;
+  }
+  .formbold-event-details h5 {
+    color: #07074d;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 15px 25px;
+  }
+  .formbold-event-details ul {
+    border-top: 1px solid #edeef2;
+    padding: 25px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
+  .formbold-event-details ul li {
+    color: #536387;
+    font-size: 16px;
+    line-height: 24px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .formbold-form-title {
+    color: #008036;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    width: 60%;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-direction: column;
+  }
+  .formbold-input-flex > div {
+    width: 100%;
+  }
+  .formbold-form-input {
+    text-align: center;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #008036;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #536387;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-policy {
+    font-size: 14px;
+    line-height: 24px;
+    color: #536387;
+    width: 70%;
+    margin-top: 22px;
+  }
+  .formbold-policy a {
+    color: #008036;
+  }
+  .formbold-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #008036;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  p{text-align: justify;}
+</style>
+
+<div class="formbold-main-wrapper">
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+  <div class="formbold-form-wrapper">
+    <div class="formbold-event-wrapper">
+      <center>
+        <h2 style="padding: 0px 0px 30px 0px" class="formbold-form-title">Behaviour Analysis</h2>
+
+        <!-- Display prediction result -->
+        <div class="result" style="color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
+          {% if prediction_b %}
+          <h2 class="formbold-form-title">Prediction Result:</h2>
+          <br>
+          {% if prediction_b[0] == 'Yes' %}
+            <h2 class="formbold-form-title" style="color: red;">{{ prediction_b[0] }}</h2>
+            <br>
+            <p>Sorry, we have notice there is an presence os Alzheimer in you prediction results</p>
+          {% else %}
+            <h2 class="formbold-form-title" style="color: #008036;">{{ prediction_b[0] }}</h2>
+            <p>It's Nice to say that your prediction results are against to Alzheimer</p>
+          {% endif %}
+          {% endif %}
+        </div>
+
+      </center>
+      <br>
+      <p style="padding: 0px 0px 30px 0px; text-align: justify;">
+        In the quest to predict Alzheimer's disease, behavior analysis is key. 
+        By scrutinizing subtle shifts in behavior, from memory lapses to mood changes, 
+        researchers craft predictive models for early detection. These insights fuel proactive interventions, 
+        promising personalized care and a future free from Alzheimer's grip.
+      </p>
+      <defs>
+      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_1675_1746" transform="translate(0 -0.524787) scale(0.000379363 0.000864594)"/>
+      </pattern>
+      <img style="width: 65rem; border-radius: 10px" src="../static/img/behaviour.jpg">
+      <h4>Note :</h4>
+      <p>
+        Provide all the details which is mentioned in the form, if any information is wrong then the prediction will be invaild. 
+        After filled the all required fields then click submit button to   start prediction process.
+      </p>
+    </div>
+
+    <!-- Form starts ----------------------------------------------------------------------- -->
+
+    <form action="{{ url_for('behaviour') }}" method="POST">
+      <h2 style="padding:30px 0px" class="formbold-form-title">Fill the Form!!</h2>
+  
+      <div class="formbold-input-flex">
+          <div>
+              <label for="date_forget" class="formbold-form-label">
+                  1) Do you find yourself frequently forgetting names, dates, or recent events?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="date_forget" id="date_forget" class="formbold-form-input">
+          </div>
+          <div>
+              <label for="face_recall" class="formbold-form-label"> 
+                  2) Have you experienced difficulties recalling familiar faces or locations?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="face_recall" id="face_recall" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="task_planning" class="formbold-form-label"> 
+                  3) Have you noticed any recent changes in your ability to plan or complete tasks?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="task_planning" id="task_planning" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="word_expression" class="formbold-form-label">  
+                  4) Have you encountered challenges in expressing thoughts or finding the right words during conversations?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="word_expression" id="word_expression" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="mood_shift" class="formbold-form-label"> 
+                  5) Have there been notable shifts in your mood or personality that you or others have observed?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="mood_shift" id="mood_shift" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="adaptability" class="formbold-form-label"> 
+                  6) Do you find it challenging to adapt to changes or unexpected situations?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="adaptability" id="adaptability" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="solution_finding" class="formbold-form-label"> 
+                  7) Have you experienced a decline in your ability to find solutions to challenges?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="solution_finding" id="solution_finding" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="sleep_patterns" class="formbold-form-label"> 
+                  8) Describe your typical sleep patterns and any recent changes in your sleep quality.<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="sleep_patterns" id="sleep_patterns" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="appetite_changes" class="formbold-form-label"> 
+                  9) Have there been any notable changes in your appetite or eating patterns?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="appetite_changes" id="appetite_changes" class="formbold-form-input">
+          </div>
+        
+          <div>
+              <label for="interest_enthusiasm" class="formbold-form-label"> 
+                  10) Have you noticed any changes in your enthusiasm for hobbies or interests you once enjoyed?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="interest_enthusiasm" id="interest_enthusiasm" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="financial_matters" class="formbold-form-label"> 
+                  11) How well do you handle financial matters, such as budgeting or paying bills?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="financial_matters" id="financial_matters" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="tech_adaptation" class="formbold-form-label"> 
+                  12) Have there been changes in your ability to learn and adapt to new technologies?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="tech_adaptation" id="tech_adaptation" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="independence_decrease" class="formbold-form-label"> 
+                  13) Have there been instances where you felt a decrease in your independence?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="independence_decrease" id="independence_decrease" class="formbold-form-input">
+          </div>
+  
+          <div>
+              <label for="home_navigation" class="formbold-form-label"> 
+                  14) How well do you recognize and navigate within your home environment?<span style="color: red;">*</span>
+              </label>
+              <input type="text" name="home_navigation" id="home_navigation" class="formbold-form-input">
+          </div>
+      </div>
+  
+      <p class="formbold-policy">
+          By filling out this form and clicking submit, you acknowledge our
+          <a href="#">privacy policy.</a>
+      </p>
+      <button class="formbold-btn">Submit</button>
+  </form>
+  </div>
+</div>
+
+{% endblock %}
