@@ -194,8 +194,8 @@
         <h2 style="padding: 0px 0px 30px 0px" class="formbold-form-title">Behaviour Analysis</h2>
 
         <!-- Display prediction result -->
-        <div class="result" style="color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
           {% if prediction_b %}
+          <div class="result" style="color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
           <h2 class="formbold-form-title">Prediction Result:</h2>
           <br>
           {% if prediction_b[0] == 'Yes' %}
@@ -206,8 +206,8 @@
             <h2 class="formbold-form-title" style="color: #008036;">{{ prediction_b[0] }}</h2>
             <p>It's Nice to say that your prediction results are against to Alzheimer</p>
           {% endif %}
+          </div>
           {% endif %}
-        </div>
 
       </center>
       <br>

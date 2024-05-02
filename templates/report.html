@@ -123,6 +123,15 @@
     padding: 40px 0px;
   }
 
+.output{
+  color: #008036;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    width: 60%;
+    padding: 15px 0px;
+}
+
   .formbold-input-flex {
     display: flex;
     gap: 20px;
@@ -193,39 +202,41 @@
   <div class="formbold-form-wrapper">
     <div class="formbold-event-wrapper">
       <center><h2 style="padding: 0px 0px 30px 0px" class="formbold-form-title">Report Analysis</h2>
-      
-              <!-- Display prediction result -->
-              <div class="result" style="color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
+
+
+                        <!-- Display prediction result
                 {% if prediction_r %}
-                <h2 class="formbold-form-title">Prediction Result:</h2>
+                <div class="result">
+                    <h2>Prediction Result:</h2>
+                    <p>{{ prediction_r }}</p>
+                </div>
+                {% endif %} -->
+      
+              <!-- Display prediction result-->
+                {% if prediction_r %}
+                <div class="result" style="color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
+                <h2 class="output">Prediction Result:</h2>
                 <br>
 
-                <!--NonDemented-->
-                {% if prediction_r[0] == 'NonDemented' %}
-                  <h2 class="formbold-form-title" style="color: red;">{{ prediction_r[0] }}</h2>
+                <!--NonDemented--->
+                {% if prediction_r[0] == 'Nondemented' %}
+                  <h2 class="output" style="color: #008036;">NON-DEMENTED</h2>
                   <br>
-                  <p>NonDemented is Alzheimer in you prediction results</p>
+                  <p>Our project findings reveal a cohort of individuals characterized as <span style="color: #008036">NON-DEMENTED</span>, 
+                    indicating normal cognitive function without evidence of dementia-related symptoms. 
+                    Through comprehensive assessments and analyses, we have identified key factors contributing 
+                    to the maintenance of cognitive health in this population. Our results provide valuable 
+                    insights into protective factors against cognitive decline and offer potential avenues for 
+                    preventive interventions aimed at preserving cognitive function in aging populations</p>
 
-                <!--VeryMildDemented-->
-                {% elif prediction_r[0] == 'VeryMildDemented' %}
-                  <h2 class="formbold-form-title" style="color: red;">{{ prediction_r[0] }}</h2>
+                <!--Demented-->
+                {% elif prediction_r[0] == 'Demented' %}
+                  <h2 class="output" style="color: red;">DEMENTED</h2>
                   <br>
-                  <p>VeryMildDemented is Alzheimer in you prediction results</p>
-
-                <!--MildDemented-->
-                {% elif prediction_r[0] == 'MildDemented' %}
-                  <h2 class="formbold-form-title" style="color: red;">{{ prediction_r[0] }}</h2>
-                  <br>
-                  <p>MildDemented is Alzheimer in you prediction results</p>
-
-                <!--ModerateDemented-->
-                {% elif prediction_r[0] == 'ModerateDemented' %}
-                  <h2 class="formbold-form-title" style="color: red;">{{ prediction_r[0] }}</h2>
-                  <br>
-                  <p>ModerateDemented is Alzheimer in you prediction results</p>
+                  <p>Demented is Alzheimer in you prediction results</p>
                 {% endif %}
+                </div>
                 {% endif %}
-              </div>
             
         </center>
         
