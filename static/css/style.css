@@ -172,7 +172,7 @@ body {
     }
   
     .navbar ul {
-      display: none;
+      display: flex;
     }
   }
   
