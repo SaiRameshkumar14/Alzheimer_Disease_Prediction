@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 import pandas as pd
 import joblib
 import tensorflow
@@ -65,6 +65,47 @@ def predict():
 @app.route('/mri')
 def mri():
     return render_template('mri.html')
+
+
+
+
+# CLASSES = ['NonDemented', 'VeryMildDemented', 'MildDemented', 'ModerateDemented']
+# custom_inception_model = keras.models.load_model("alzheimer_cnn_model", custom_objects={'F1Score': F1Score})
+
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     if request.method == 'POST':
+#         # Get uploaded image
+#         img = request.files['image']
+
+#         # Read image data as bytes
+#         img_bytes = img.read()
+
+#         # Convert bytes to image
+#         img = image.load_img(io.BytesIO(img_bytes), target_size=(176, 176))
+#         img_array = image.img_to_array(img)
+#         img_array = np.expand_dims(img_array, axis=0)
+#         img_array = preprocess_input(img_array)
+
+#         # Make predictions
+#         predictions = custom_inception_model.predict(img_array)
+        
+#         # Get the top-4 predicted classes
+#         top4_classes = np.argsort(predictions[0])[-4:][::-1]
+
+#         # Prepare the prediction result
+#         results_m = []
+#         for i, class_index in enumerate(top4_classes):
+#             class_name = CLASSES[class_index]
+#             score = predictions[0][class_index] # Convert to float
+#             results_m += ({'rank': i + 1, 'class_name': class_name, 'score:.2f': score})
+
+#         return results_m
+
+# @app.route('/mri')
+# def mri():
+#     return render_template('mri.html')
+
 
 ######### END ############################################################################################
 
