@@ -56,13 +56,13 @@
 .sam-pre{
   color: #008036;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .sam-pre2{
   color: #008036;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 18px;
 }
 
 .drop_box {
@@ -119,9 +119,7 @@
   border-radius: 4px;
 }
 
-  /*p{text-align: justify;}
-
- Loader style 
+ /* Loader style */
 
   .loader {
   width: 48px;
@@ -170,7 +168,7 @@
     transform: scale(1) translate(-50%, -50%);
   }
 }
-/*----------------------------
+/*----------------------------*/
 .typewriter {
   --blue: #008036;
   --blue-dark: #008036;
@@ -237,7 +235,7 @@
 
 .typewriter .paper {
   position: absolute;
-  left: 225px;
+  left: 17rem;
   top: -26px;
   width: 40px;
   height: 46px;
@@ -407,24 +405,6 @@
 /* END Loader style */
 </style>
 
-<!-- <center><div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="content">
-  <form style="margin-top: 12px;" >
-      <div class="card">
-        <center><h3>Upload Files</h3></center>
-        <div class="drop_box">
-          <header>
-            <h4>Select File here</h4>
-          </header>
-          <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
-          <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
-          <input type="file" style="margin-top: 20px; border: 25px;" id="image" class="btn">
-        </div>
-      </div>
-      <button style="margin-top: 5rem; border-radius: 20px;" id="predict" class="btn">Predict</button>
-  </form>
-  <img style="width: 45vw;" src="../static/img/boy3.png" alt="">
-</div></center> --------->
-
 <center>
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="content">
       <form style="margin-top: 12px;" id="uploadForm" enctype="multipart/form-data">
@@ -441,20 +421,22 @@
           <button type="submit" style="margin-top: 5rem; border-radius: 20px;" class="btn">Predict</button>
       </form>
       <img style="width: 45vw;" src="../static/img/boy3.png" alt="">
-  </div>    
-  <div id="result" class="result"></div>
-    <!-- {% if results %}
-    <center><div id="result" class="result">
-      <h1>Prediction Results</h1>
-      <div>
-          {% for result in results %}
-              <p>{{ result['rank'] }}: {{ result['class_name'] }} ({{ result['score'] }})</p>
-          {% endfor %}
-      </div>
-    </div></center>
-    {% endif %} -->
+  </div>  
 
+  <div id="loader" style="width: 30%; background-color: antiquewhite; color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
+    <span class="loader"></span>
+    <div style="padding: 10px;"></div>
+    <div style="margin: 20px;" class="typewriter">
+      <div class="slide"><i></i></div>
+      <div class="paper"></div>
+      <div class="keyboard"></div>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
 </center>
+
+
+
 <script>
   document.getElementById('uploadForm').addEventListener('submit', async (event) => {
       event.preventDefault();

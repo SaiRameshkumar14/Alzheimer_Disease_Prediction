@@ -488,7 +488,7 @@
 
         <!-- Display prediction result -->
           {% if prediction_b %}
-          <div class="result" id="loader" style="background-color: #f5fff9; color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
+          <div class="result" id="loader" style="background-color: antiquewhite; color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
             <span class="loader"></span>
             <div style="padding: 10px;"></div>
             <div style="margin: 20px;" class="typewriter">
@@ -501,12 +501,12 @@
           <h2 class="output">Prediction Result :</h2>
           <br>
           {% if prediction_b[0] == 'Yes' %}
-            <h2 class="formbold-form-title" style="color: red;">{{ prediction_b[0] }}</h2>
-            <br>
+          <h2 class="output" style="color: rgb(255, 84, 84); background-color: antiquewhite;border-color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">DEMENTED</h2>
+          <br>
             <p>Sorry, we have notice there is an presence of Alzheimer in you prediction results</p>
           {% else %}
-            <h2 class="formbold-form-title" style="color: #008036;">{{ prediction_b[0] }}</h2>
-            <p>It's Nice to say that your prediction results are against to Alzheimer</p>
+          <h2 class="output" style=" background-color: #f5fff9; color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">NON-DEMENTED</h2>
+          <p>It's Nice to say that your prediction results are against to Alzheimer</p>
           {% endif %}
           </div>
           {% endif %}

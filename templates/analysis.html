@@ -255,7 +255,7 @@
 
 .typewriter .paper {
   position: absolute;
-  left: 76rem;
+  left: 16rem;
   top: -26px;
   width: 40px;
   height: 46px;
@@ -447,7 +447,7 @@
   <div id="result">
     {{ result }}
   </div>
-  <div id="loader" style="display: none;">
+  <div id="loader" style="display: none; background-color: antiquewhite; width: 30vw; color: #008036; border-radius: 25px; border-style: dashed solid; margin: 10px; padding: 30px;">
     <span class="loader"></span>
     <div style="padding: 10px;"></div>
     <div style="margin: 20px;" class="typewriter">
@@ -461,11 +461,11 @@
     <div class="plot-img">
       <div class="plot">
         <h3>Bar Chart</h3>
-        <img style= "height: 50rem; width: 70rem;" src="{{ bar_plot_path }}" alt="Bar Chart" id="bar-chart">
+        <img style= "height: 50rem; width: 80rem;" src="{{ bar_plot_path }}" alt="Bar Chart" id="bar-chart">
       </div>
       <div class="plot">
         <h3>Pie Chart</h3>
-        <img style="width:50rem;" src="{{ pie_plot_path }}" alt="Pie Chart" id="pie-chart">
+        <img style="width:50rem; height: 50rem;" src="{{ pie_plot_path }}" alt="Pie Chart" id="pie-chart">
       </div>
     </div>
   </div>
