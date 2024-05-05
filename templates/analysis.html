@@ -46,7 +46,19 @@
   padding: 10px 30px 40px;
 }
 
+.plot img{
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
 .card h3 {
+  color: #008036;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 13px;
+}
+
+.plot h3 {
   color: #008036;
   font-size: 22px;
   font-weight: 600;
@@ -106,9 +118,314 @@
   padding: 12px 20px;
   border-radius: 4px;
 }
+
+.plot{
+  margin: 5px 0px 50px 0px; 
+  display: flex; 
+  flex-wrap: wrap; 
+  flex-direction: column; 
+  justify-content: space-evenly; 
+  align-content: space-around; 
+  align-items: center;
+}
+
+.plot-img{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+
+/* Loader style */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #ccc;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.5) translate(0, 0);
+  background-color: #0d4022;
+  border-radius: 50%;
+  animation: animloader 1s infinite ease-in-out;
+}
+.loader::before {
+  background-color: #008036;
+  transform: scale(0.5) translate(-48px, -48px);
+}
+
+.loader::before {
+  background-color: #008036;
+  transform: scale(0.5) translate(-48px, -48px);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes animloader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+/*----------------------------*/
+.typewriter {
+  --blue: #008036;
+  --blue-dark: #008036;
+  --key: #fff;
+  --paper: #EEF0FD;
+  --text: #D3D4EC;
+  --tool: #FBC56C;
+  --duration: 3s;
+  position: relative;
+  -webkit-animation: bounce05 var(--duration) linear infinite;
+  animation: bounce05 var(--duration) linear infinite;
+}
+
+.typewriter .slide {
+  width: 92px;
+  height: 20px;
+  border-radius: 3px;
+  margin-left: 14px;
+  transform: translateX(14px);
+  background: linear-gradient(var(--blue), var(--blue-dark));
+  -webkit-animation: slide05 var(--duration) ease infinite;
+  animation: slide05 var(--duration) ease infinite;
+}
+
+.typewriter .slide:before, .typewriter .slide:after,
+.typewriter .slide i:before {
+  content: "";
+  position: absolute;
+  background: var(--tool);
+}
+
+.typewriter .slide:before {
+  width: 2px;
+  height: 8px;
+  top: 6px;
+  left: 100%;
+}
+
+.typewriter .slide:after {
+  left: 94px;
+  top: 3px;
+  height: 14px;
+  width: 6px;
+  border-radius: 3px;
+}
+
+.typewriter .slide i {
+  display: block;
+  position: absolute;
+  right: 100%;
+  width: 6px;
+  height: 4px;
+  top: 4px;
+  background: var(--tool);
+}
+
+.typewriter .slide i:before {
+  right: 100%;
+  top: -2px;
+  width: 4px;
+  border-radius: 2px;
+  height: 14px;
+}
+
+.typewriter .paper {
+  position: absolute;
+  left: 76rem;
+  top: -26px;
+  width: 40px;
+  height: 46px;
+  border-radius: 5px;
+  background: var(--paper);
+  transform: translateY(46px);
+  -webkit-animation: paper05 var(--duration) linear infinite;
+  animation: paper05 var(--duration) linear infinite;
+}
+
+.typewriter .paper:before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 7px;
+  border-radius: 2px;
+  height: 4px;
+  transform: scaleY(0.8);
+  background: var(--text);
+  box-shadow: 0 12px 0 var(--text), 0 24px 0 var(--text), 0 36px 0 var(--text);
+}
+
+.typewriter .keyboard {
+  width: 120px;
+  height: 56px;
+  margin-top: -10px;
+  z-index: 1;
+  position: relative;
+}
+
+.typewriter .keyboard:before, .typewriter .keyboard:after {
+  content: "";
+  position: absolute;
+}
+
+.typewriter .keyboard:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  transform: perspective(10px) rotateX(2deg);
+  transform-origin: 50% 100%;
+}
+
+.typewriter .keyboard:after {
+  left: 2px;
+  top: 25px;
+  width: 11px;
+  height: 4px;
+  border-radius: 2px;
+  box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  -webkit-animation: keyboard05 var(--duration) linear infinite;
+  animation: keyboard05 var(--duration) linear infinite;
+}
+
+@keyframes bounce05 {
+  85%, 92%, 100% {
+    transform: translateY(0);
+  }
+
+  89% {
+    transform: translateY(-4px);
+  }
+
+  95% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes slide05 {
+  5% {
+    transform: translateX(14px);
+  }
+
+  15%, 30% {
+    transform: translateX(6px);
+  }
+
+  40%, 55% {
+    transform: translateX(0);
+  }
+
+  65%, 70% {
+    transform: translateX(-4px);
+  }
+
+  80%, 89% {
+    transform: translateX(-12px);
+  }
+
+  100% {
+    transform: translateX(14px);
+  }
+}
+
+@keyframes paper05 {
+  5% {
+    transform: translateY(46px);
+  }
+
+  20%, 30% {
+    transform: translateY(34px);
+  }
+
+  40%, 55% {
+    transform: translateY(22px);
+  }
+
+  65%, 70% {
+    transform: translateY(10px);
+  }
+
+  80%, 85% {
+    transform: translateY(0);
+  }
+
+  92%, 100% {
+    transform: translateY(46px);
+  }
+}
+
+@keyframes keyboard05 {
+  5%, 12%, 21%, 30%, 39%, 48%, 57%, 66%, 75%, 84% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  9% {
+    box-shadow: 15px 2px 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  18% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 2px 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  27% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 12px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  36% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 12px 0 var(--key), 60px 12px 0 var(--key), 68px 12px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  45% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 2px 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  54% {
+    box-shadow: 15px 0 0 var(--key), 30px 2px 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  63% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 12px 0 var(--key);
+  }
+
+  72% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 2px 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+
+  81% {
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 12px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+  }
+}
+
+/* END Loader style */
 </style>
 
-<center>
+  <center>
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;" class="content">
       <form style="margin-top: 12px;" id="uploadForm_a" enctype="multipart/form-data">
           <div class="card">
@@ -118,36 +435,49 @@
                       <h4>Select File here</h4>
                   </header>
                   <p>Files Supported: .png .jpg .jpeg </p>
-                  <input type="file" accept=".jpeg,.jpg,.png" style="margin-top: 20px; border: 25px;" id="image"
-                      name="image" accept="image/*" class="btn" required>
+                  <input type="file" accept=".jpeg,.jpg,.png" style="margin-top: 20px; border: 25px;" id="image_a"
+                      name="image_a" accept="image/*" class="btn" required>
               </div>
           </div>
-          <button type="submit" style="margin-top: 5rem; border-radius: 20px;" class="btn">Predict</button>
+          <button id="submitButton" type="submit" style="margin-top: 5rem; border-radius: 20px;" class="btn">Predict</button>
       </form>
   </div>
   <div id="result_a" class="result_a"></div>
   <img id="prediction_plot" src="" alt="Prediction Plot" style="display: none;">
+  <div id="result">
+    {{ result }}
+  </div>
+  <div id="loader" style="display: none;">
+    <span class="loader"></span>
+    <div style="padding: 10px;"></div>
+    <div style="margin: 20px;" class="typewriter">
+      <div class="slide"><i></i></div>
+      <div class="paper"></div>
+      <div class="keyboard"></div>
+    </div>
+  </div>
+  <div id="plot" class="plot-container" style="display: none;">
+    <center><hr style=" border: 0.5px solid green; border-radius: 5px; width: 75vw; margin: 5rem;" class="new5"></center>
+    <div class="plot-img">
+      <div class="plot">
+        <h3>Bar Chart</h3>
+        <img style= "height: 50rem; width: 70rem;" src="{{ bar_plot_path }}" alt="Bar Chart" id="bar-chart">
+      </div>
+      <div class="plot">
+        <h3>Pie Chart</h3>
+        <img style="width:50rem;" src="{{ pie_plot_path }}" alt="Pie Chart" id="pie-chart">
+      </div>
+    </div>
+  </div>
 </center>
-<div id="result">
-  {{ result }}
-</div>
-<div class="plot-container">
-  <div class="plot">
-    <h3>Bar Chart</h3>
-    <img src="{{ bar_plot_path }}" alt="Bar Chart" id="bar-chart">
-  </div>
-  <div class="plot">
-    <h3>Pie Chart</h3>
-    <img src="{{ pie_plot_path }}" alt="Pie Chart" id="pie-chart">
-  </div>
-</div>
+
 
 <script>
   document.getElementById('uploadForm_a').addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = new FormData();
-      formData.append('image', document.getElementById('image').files[0]);
-      const response = await fetch('/predict', {
+      formData.append('image_a', document.getElementById('image_a').files[0]);
+      const response = await fetch('/predict_a', {
           method: 'POST',
           body: formData
       });
@@ -156,9 +486,27 @@
       // Display the prediction plots
       const plotContainer = document.querySelector('.plot-container');
       plotContainer.style.display = 'block';
-      document.getElementById('bar-chart').src = '{{ url_for("static", filename="predicted_probabilities_bar.png") }}';
-      document.getElementById('pie-chart').src = '{{ url_for("static", filename="predicted_probabilities_pie.png") }}';
+      document.getElementById('bar-chart').src = '{{ url_for("static", filename="p_img/predicted_probabilities_bar.png") }}';
+      document.getElementById('pie-chart').src = '{{ url_for("static", filename="p_img/predicted_probabilities_pie.png") }}';
   });
+
+  function myFunction() {
+    var x = document.getElementById("loader");
+    var y = document.getElementById("plot");
+    x.style.display = "none";
+    y.style.display = "block";
+  }
+
+  document.getElementById("submitButton").addEventListener("click", function() {
+    var x = document.getElementById("loader");
+    var y = document.getElementById("plot");
+    x.style.display = "block";
+    setTimeout(function() {
+      myFunction();
+      y.style.display = "block";
+    }, 8000);
+  });
+
 </script>
 
 {% endblock %}

@@ -228,7 +228,7 @@ custom_inception_model_a = keras.models.load_model("alzheimer_cnn_model", custom
 def predict_a():
     if request.method == 'POST':
         # Get uploaded image
-        img_a = request.files['image']
+        img_a = request.files['image_a']
         # Read image data as bytes
         img_bytes_a = img_a.read()
         # Convert bytes to image
@@ -260,7 +260,7 @@ def predict_a():
         plt.ylabel('Probability')
         plt.xticks(rotation=45)
         plt.tight_layout()
-        plot_dir = 'static/'
+        plot_dir = 'static/p_img'
         if not os.path.exists(plot_dir):
             os.makedirs(plot_dir)
         bar_plot_path = os.path.join(plot_dir, 'predicted_probabilities_bar.png')
@@ -280,8 +280,8 @@ def predict_a():
         plt.savefig(pie_plot_path)
         plt.close()
 
-        return render_template('analysis.html', result=result_a, bar_plot_path=bar_plot_path, pie_plot_path=pie_plot_path)
-
+        return render_template('sam.html', result=result_a, bar_plot_path=bar_plot_path, pie_plot_path=pie_plot_path)
+    
 ######### END ############################################################################################
 
 
